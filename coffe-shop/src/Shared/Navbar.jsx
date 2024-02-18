@@ -23,7 +23,8 @@ const Navbar = () => {
             {
                 user?.user.isVerified === false && (<div className='bg-red-500 py-3 px-4 text-white'>
                     <Link to="/verifyOtp">Please verify</Link>
-                </div>)
+                </div>
+                )
             }
             <div className='py-3 px-10 sm:px-10 md:px-6 lg:px-6'>
                 <div className='flex items-center justify-between'>
@@ -35,9 +36,35 @@ const Navbar = () => {
                         <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Our Menu</a>
                         <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Add Food</a>
                         <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Populer food</a>
-                        <Link to='/login'>
-                            <button className='bg-[#F54748] active:scale-90 transition duration-100 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>login</button>
-                        </Link>
+
+                        {
+                            user ? (<div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img alt="Tailwind CSS Navbar component" src={user?.user.profielImage} />
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
+                                    <li>
+                                        <a className="justify-between">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li><a>Settings</a></li>
+                                    <li><button onClick={() => {
+                                        localStorage.clear()
+                                        location.reload()
+                                        navigate("/")
+                                    }}>Logout</button></li>
+                                </ul>
+                            </div>) : (
+
+                                <Link to='/login'>
+                                    <button className='bg-[#F54748] active:scale-90 transition duration-100 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>login</button>
+                                </Link>
+                            )
+                        }
+
                     </div>
 
                     <div className='block lg:hidden z-40' onClick={handleNav}>
@@ -51,34 +78,11 @@ const Navbar = () => {
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Today special</a>
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Why FoodHaut</a>
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Our Menu</a>
-                            <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Add Food</a>
+                            <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Add food</a>
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Populer food</a>
 
-                            {
-                                user ? (<div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img alt="Tailwind CSS Navbar component" src={user?.user.profileImage} />
-                                        </div>
-                                    </div>
-                                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
-                                        <li>
-                                            <a className="justify-between">
-                                                Profile
 
-                                            </a>
-                                        </li>
-                                        <li><a>Settings</a></li>
-                                        <li><button onClick={() => {
-                                            localStorage.clear()
-                                            location.reload()
-                                            navigate("/")
-                                        }}>Logout</button></li>
-                                    </ul>
-                                </div>) : (<button className='bg-[#F54748] active:scale-90 transition duration-100 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>login</button>
-                                )
-                            }
-                          
+                            <button className='bg-[#F54748] active:scale-90 transition duration-100 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>login</button>
 
                         </div>
                     </div>
