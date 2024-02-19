@@ -4,8 +4,6 @@
 // const otpGenerator = require('otp-generator')
 // const nodemailer = require('nodemailer')
 
-
-
 // const registerController = async (req, res) => {
 //     console.log(req.body && req.body.password); // Check if req.body and req.body.password are defined
 //     try {
@@ -60,8 +58,6 @@
 //                 text: `Your verification code is ${otp}`
 //             }
 
-
-
 //             transporter.sendMail(mailOptions, (error, info) => {
 //                 if (error) {
 //                     console.log(error);
@@ -70,7 +66,6 @@
 //                 res.send({
 //                     message: "Otp sent to email",
 //                 });
-
 
 //             })
 //             return res.status(201).send({
@@ -100,12 +95,11 @@
 
 // module.exports = { registerController }
 
-
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../model/User');
-const otpGenerator = require('otp-generator');
-const nodemailer = require('nodemailer');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const User = require("../model/User");
+const otpGenerator = require("otp-generator");
+const nodemailer = require("nodemailer");
 
 const registerController = async (req, res) => {
   console.log(req.body, "jkhgfhjkl");
@@ -216,55 +210,54 @@ const registerController = async (req, res) => {
   }
 };
 
-
 const authController = async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.body.userId });
+    console.log("|||||||||||", req.body.userId);
+    const user = await User.findById(req.body.userId.id);
     if (!user) {
       return res.status(200).send({
         message: "user not found",
         success: false,
-      })
-    }
-    else {
+      });
+    } else {
       console.log(user);
       return res.status(200).send({
-        message: "Register successfully",
-        data: { 
+        message: "user Fetch successfully",
+        data: {
           user,
         },
         success: true,
-      })
+      });
     }
   } catch (err) {
     console.log(err);
     res.status(500).send({
       success: false,
       message: `Auth error`,
-    })
-
+    });
   }
-}
-
+};
 
 const loginController = async (req, res) => {
   try {
-    console.log(req.body,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    const user = await User.findOne({ email: req.body.email }).select("+password");
+    console.log(req.body, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    const user = await User.findOne({ email: req.body.email }).select(
+      "+password"
+    );
     if (!user) {
       return res.status(200).send({
-        message: 'User does not exist',
+        message: "User does not exist",
         success: false,
-      })
+      });
     }
 
     const isMatch = await bcrypt.compare(req.body.password, user.password);
-    const signuser = await User.findOne({ email: req.body.email })
+    const signuser = await User.findOne({ email: req.body.email });
     if (!isMatch) {
       return res.status(200).send({
         success: false,
         message: "Invalid Password and email",
-      })
+      });
     }
 
     const token = jwt.sign({ id: signuser._id }, process.env.JWT_SECRET, {
@@ -278,16 +271,12 @@ const loginController = async (req, res) => {
       },
       success: true,
     });
-
   } catch (error) {
     res.status(500).send({
       success: false,
       message: "Auth error",
-    })
+    });
   }
-}
-
-
-
+};
 
 module.exports = { registerController, authController, loginController };
