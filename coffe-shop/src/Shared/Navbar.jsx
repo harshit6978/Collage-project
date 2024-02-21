@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import logo from "../assets/logo.png"
+import React, { useState } from 'react';
+import logo from "../assets/logo.png";
 import { TiThMenu } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,45 +10,53 @@ const Navbar = () => {
     const [nav, setnav] = useState(false)
     const navigate = useNavigate();
     const { user, setUser } = useUserContext();
-    console.log(user);
+    console.log(user)
 
-
-
+    
     const handleNav = () => {
         setnav(!nav)
     }
     return (
         <div className="bg-white/80 shadow-md fixed top-0 left-0 w-full z-40 ease duration-300 backdrop-blur-md">
-
-            {
-                user?.user.isVerified === false && (<div className='bg-red-500 py-3 px-4 text-white'>
+            {user && !user.isVerified && (
+                <div className='bg-red-500 py-3 px-4 text-white'>
                     <Link to="/verifyOtp">Please verify</Link>
                 </div>
-                )
-            }
+            )}
+
             <div className='py-3 px-10 sm:px-10 md:px-6 lg:px-6'>
                 <div className='flex items-center justify-between'>
-                    <img src={logo} alt='' className='h-14 cursor-pointer' />
+                    <Link to='/'>
+                        <img src={logo} alt='' className='h-14 cursor-pointer' />
+                    </Link>
 
                     <div className='lg:flex hidden gap-8 items-center'>
                         <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Today special</a>
                         <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Why FoodHaut</a>
-                        <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Our Menu</a>
-                        <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Add Food</a>
+                        <Link to='/menu' className='text-[#191919] text-xl font-medium hover:text-red-500'>Our Menu</Link>
+                        {
+                            user?.user?.role === 'admin' && <Link to='/addfood' className='text-[#191919] text-xl font-medium hover:text-red-500'>Add Food</Link>
+                        }
                         <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Populer food</a>
 
                         {
                             user ? (<div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img alt="Tailwind CSS Navbar component" src={user?.user.profielImage} />
+                                        {
+                                            user ? (
+                                                <img alt="Tailwind CSS Navbar component" src={user?.user.profileImage} />
+                                            ) : (
+                                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                            )
+                                        }
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
                                     <li>
-                                        <a className="justify-between">
+                                        <Link to="/profile" className="justify-between">
                                             Profile
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li><a>Settings</a></li>
                                     <li><button onClick={() => {
@@ -80,8 +88,6 @@ const Navbar = () => {
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Our Menu</a>
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Add food</a>
                             <a href='' className='text-[#191919] text-base font-medium hover:text-red-500'>Populer food</a>
-
-
                             <button className='bg-[#F54748] active:scale-90 transition duration-100 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>login</button>
 
                         </div>

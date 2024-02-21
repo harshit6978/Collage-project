@@ -3,6 +3,9 @@ const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const imageRoute = require("./routes/image")
 const userRoute = require("./routes/user")
+const foodRoute = require("./routes/food")
+
+
 const app = express()
 dotenv.config();
 const cors = require('cors')
@@ -38,6 +41,7 @@ mongoose.connection.on("connected", () => {
 
 app.use('/api/v1/all', imageRoute)
 app.use('/api/v1/user', userRoute)
+app.use('/api/v1/food', foodRoute)
 
 
 app.use(express.json({ limit: "3mb" }))

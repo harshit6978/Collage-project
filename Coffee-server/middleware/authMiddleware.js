@@ -9,19 +9,20 @@ const protect = async (req, res, next) => {
                 return res.status(200).send({
                     message: "auth failed",
                     success: false,
-                })
+                });
             } else {
-                req.body.userId = decode.indexOf;
+                console.log("}{{}{}{", decode);
+                req.body.userId = decode;
                 next();
             }
-        })
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
             message: "Auth error",
-        })
+        });
     }
-}
+};
 
 module.exports = protect;

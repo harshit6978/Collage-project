@@ -171,8 +171,8 @@ const registerController = async (req, res) => {
       const transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
-          user: "harshitlathiya19@gmail.com",
-          pass: "cgvd yrbs jfho zwqb",
+          user: "lathiyaharshit19@gmail.com",
+          pass: "cgvdyrbsjfhozwqb",
         },
       });
 
@@ -219,8 +219,8 @@ const registerController = async (req, res) => {
 
 const authController = async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.body.userId });
-    if (!user) {
+    console.log("|||||||||||", req.body.userId);
+    const user = await User.findById(req.body.userId.id); if (!user) {
       return res.status(200).send({
         message: "user not found",
         success: false,
@@ -229,8 +229,8 @@ const authController = async (req, res) => {
     else {
       console.log(user);
       return res.status(200).send({
-        message: "Register successfully",
-        data: { 
+        message: "user fetch successfully",
+        data: {
           user,
         },
         success: true,
@@ -249,7 +249,7 @@ const authController = async (req, res) => {
 
 const loginController = async (req, res) => {
   try {
-    console.log(req.body,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log(req.body, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     const user = await User.findOne({ email: req.body.email }).select("+password");
     if (!user) {
       return res.status(200).send({
@@ -288,6 +288,65 @@ const loginController = async (req, res) => {
 }
 
 
+const verifyOtpController = async () => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user.otp === req.body.combineOtp) {
+      user.isVerified = true;
+      await user.save();
+      res.status(200).send({
+        success: true,
+        message: "otp verified"
+      })
+    } else {
+      res.status(200).send({
+        success: false,
+        message: "otp not verified",
+      })
+    }
+  } catch (error) {
+    res.status(500).send({
+      message: "fail to verified",
+      success: false,
+    })
+  }
+}
 
+const updateUserProfile = async () => {
+  try {
+    const {
+      name, profileImage, userId, street, city, state, zipCode, country
+    } = req.body
+    // console.log(name, profileImage, userId, street, city, state, zipCode, country,'---------------------------');
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(200).send({
+        message: "User not found",
+        success: false,
+      })
+    }
 
-module.exports = { registerController, authController, loginController };
+    user.name = name || user.name
+    user.profileImage = profileImage || user.profileImage
+    user.street = street || user.street
+    user.city = city || user.city
+    user.state = state || user.state
+    user.zipCode = zipCode || user.zipCode
+    user.country = country || user.country
+
+    await user.save();
+
+    return res.status(201).send({
+      message: "Profile Update successful",
+      success: true,
+    });
+
+  } catch (err) {
+    res.status(500).send({
+      message: "User error",
+      success: false,
+    })
+  }
+}
+
+module.exports = { registerController, authController, updateUserProfile, loginController, verifyOtpController };

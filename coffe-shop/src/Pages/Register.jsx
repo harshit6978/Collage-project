@@ -144,9 +144,7 @@ const Register = () => {
             Already Account
           </a>
           <ToastContainer />
-          {/* <div class="Toastify">
 
-                    </div> */}
         </form>
       </div>
     </div>

@@ -49,30 +49,29 @@ import { Navigate } from 'react-router-dom';
 export default function ProtectedRoute({ children }) {
     const { user, setUser } = useUserContext();
 
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                if (token) {
-                    const res = await axios.get(
-                        "http://localhost:8000/api/v1/user/get-user", {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
+    const getUser = async () => {
+        try {
+            const token = localStorage.getItem("token");
+            if (token) {
+                const res = await axios.get(
+                    "http://localhost:8000/api/v1/user/get-user", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
                         }
-                    );
-                    if (res.data.success) {
-                        setUser(res.data.data);
-                    } else {
-                        // localStorage.clear();
                     }
+                );
+                if (res.data.success) {
+                    setUser(res.data.data);
+                } else {
+                    // localStorage.clear();
                 }
-            } catch (error) {
-                localStorage.clear();
-                console.log(error);
             }
-        };
-
+        } catch (error) {
+            localStorage.clear();
+            console.log(error);
+        }
+    };
+    useEffect(() => {
         if (!user) {
             getUser();
         }

@@ -41,6 +41,26 @@ const UserSchema = new mongoose.Schema({
     otp: {
         type: Number,
     },
+    street: {
+        type: String,
+        required: false,
+    },
+    city: {
+        type: String,
+        required: false,
+    },
+    state: {
+        type: String,
+        required: false,
+    },
+    zipCode: {
+        type: String,
+        required: false,
+    },
+    country: {
+        type: String,
+        required: false,
+    },
     role: {
         type: String,
         enum: ["user", "admin"],
