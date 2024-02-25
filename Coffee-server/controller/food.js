@@ -63,7 +63,7 @@ const getAllFoods = async (req, res) => {
 const getNewFoods = async (req, res) => {
     try {
 
-        const foodItems = await Food.find().sort({ createdAt: -1 }).limit(12)
+        const foodItems = await Food.find().sort({ createdAt: -1 }).limit(300)
         res.status(200).json({
             message: "12 Register Food Showing",
             success: true,
@@ -107,7 +107,7 @@ const getFoodsFromDistinctCatagory = async (req, res) => {
     try {
         const distinctCatagory = await Food.distinct("catagory");
         const distinctfood = await Promise.all(
-            distinctCatagory.slice(0, 4).map(async (catagory) => {
+            distinctCatagory.slice(0, 8).map(async (catagory) => {
                 const food = await Food.findOne({ catagory });
                 return food;
             })
@@ -149,4 +149,26 @@ const getTopRating = async (req, res) => {
     }
 }
 
-module.exports = { createFood, getAllFoods, getFoodById, getNewFoods, getFoodsFromDistinctCatagory, getTopRating }
+const deleteFood = async function (req, res) {
+    try {
+      const fooddatadelete = await Food.findByIdAndDelete({
+        _id: req.params.id,
+      });
+      if (!fooddatadelete) {
+        return res.status(400).json({
+          status: "Fail",
+          message: "food not found",
+        });
+      }
+      res.status(200).json({
+        status: "Sucess",
+        message: "food delete sucessfully",
+      });
+    } catch (error) {
+      res.status(404).json({
+        status: "Fail",
+        message: "food not found",
+      });
+    }
+  };
+module.exports = { createFood, getAllFoods, getFoodById, getNewFoods, getFoodsFromDistinctCatagory, getTopRating, deleteFood }

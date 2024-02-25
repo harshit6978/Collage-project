@@ -57,10 +57,10 @@ const Profile = () => {
                     state,
                     zipCode,
                     profileImage,
-
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                    
+                    // headers: {
+                    //     Authorization: `Bearer ${token}`
+                    // }
                 }
                 );
                 if (res.data.success) {
@@ -75,9 +75,6 @@ const Profile = () => {
         } catch (error) {
             console.log(error);
         }
-
-
-
     };
 
 

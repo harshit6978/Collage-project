@@ -1,7 +1,7 @@
 const express = require('express');
 // const protect = require('../middleware/authMiddleware');
 const verifytoken = require("../middleware/authMiddleware");
-const { createFood, getAllFoods, getFoodById, getNewFoods, getFoodsFromDistinctCatagory, getTopRating } = require('../controller/food');
+const { createFood, getAllFoods, getFoodById, getNewFoods, getFoodsFromDistinctCatagory, getTopRating, deleteFood } = require('../controller/food');
 
 
 router = express.Router();
@@ -12,5 +12,6 @@ router.get("/getNewFoods", getNewFoods);
 router.get("/getTopRated", getTopRating);
 router.get("/specialFoods", getFoodsFromDistinctCatagory);
 router.get("/getFood/:id", getFoodById);
+router.delete("/deleteFood/:id", deleteFood);
 
 module.exports = router;

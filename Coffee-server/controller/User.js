@@ -288,7 +288,7 @@ const loginController = async (req, res) => {
 }
 
 
-const verifyOtpController = async () => {
+const verifyOtpController = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user.otp === req.body.combineOtp) {
@@ -297,22 +297,22 @@ const verifyOtpController = async () => {
       res.status(200).send({
         success: true,
         message: "otp verified"
-      })
+      });
     } else {
       res.status(200).send({
         success: false,
         message: "otp not verified",
-      })
+      });
     }
   } catch (error) {
     res.status(500).send({
       message: "fail to verified",
       success: false,
-    })
+    });
   }
 }
 
-const updateUserProfile = async () => {
+const updateUserProfile = async (req,res) => {
   try {
     const {
       name, profileImage, userId, street, city, state, zipCode, country

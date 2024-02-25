@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaHeart, FaStar } from 'react-icons/fa'
+import { FaHeart, FaRupeeSign, FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 const Foods = ({ curElem }) => {
@@ -16,9 +16,9 @@ const Foods = ({ curElem }) => {
                 </div>
 
                 <div className='absolute bottom-2 right-2'>
-                    <button className='shadow-sm bottom-4 border-white text-white bg-[#fdc55e] cursor-pointer p-3 h-14 w-14 text-xl font-bold rounded-full relative'>
-                        <div className='absolute text-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-                            ${curElem.price}
+                    <button className='shadow-sm bottom-4 border-white text-white bg-[#fdc55e] cursor-pointer p-3 h-16 w-16 text-xl font-bold rounded-full relative'>
+                        <div className='absolute flex text-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                            <FaRupeeSign className='mt-1' />{curElem.price}
                         </div>
                     </button>
                 </div>

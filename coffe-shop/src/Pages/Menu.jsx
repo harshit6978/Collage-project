@@ -3,6 +3,7 @@ import { useFoodContext } from '../../context/foodContext';
 import axios from "axios";
 import { FaHeart, FaStar, FaRupeeSign } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
+import { useCartContext } from '../../context/cartContext';
 // import { FaIndustry } from "react-icons/fa";
 
 const Menu = () => {
@@ -22,8 +23,8 @@ const Menu = () => {
     },
     {
       id: 1,
-      name: 'Rice',
-      value: 'Rice'
+      name: 'Frappuccino',
+      value: 'Frappuccino'
     },
     {
       id: 2,
@@ -32,21 +33,37 @@ const Menu = () => {
     },
     {
       id: 3,
-      name: 'Drinks',
-      value: 'Drinks'
+      name: 'Late',
+      value: 'Late'
     },
     {
       id: 4,
-      name: 'Fruits',
-      value: 'Fruits'
+      name: 'Tonic Base',
+      value: 'Tonic Base'
     },
     {
       id: 5,
-      name: 'Pizza',
-      value: 'Pizza'
+      name: 'Shakes',
+      value: 'Shakes'
+    },
+    {
+      id: 6,
+      name: 'Mojito',
+      value: 'Mojito'
+    },
+    {
+      id: 7,
+      name: 'Hot Chocolate',
+      value: 'Hot Chocolate'
+    },
+    {
+      id: 8,
+      name: 'Juice',
+      value: 'Juice'
     },
   ];
 
+  console.log(Food,"fooddddd");
   const handleBtn = (btn) => {
     setActive(btn.id);
     setValue(btn.value);
@@ -69,6 +86,7 @@ const Menu = () => {
   }, [value])
   console.log(Food, "khg");
 
+  const { addToCart } = useCartContext()
 
   return (
     <div className='pt-[16vh]'>
@@ -87,7 +105,7 @@ const Menu = () => {
             {Food?.map((curElem) => (
               <div className='food-card flex bg-red-500/10 rounded-xl flex-col cursor-pointer items-center p-5'>
                 <div className='relative mb-3'>
-                  <Link to={`/menu/${curElem?._id }`}>
+                  <Link to={`/menu/${curElem?._id}`}>
                     <img src={curElem?.foodImage} />
                   </Link>
                   <div className='absolute top-2 left-2'>
@@ -97,9 +115,9 @@ const Menu = () => {
                   </div>
 
                   <div className='absolute bottom-2 right-2'>
-                    <button className='shadow-sm bottom-4 border-white text-white bg-[#fdc55e] cursor-pointer p-3 h-14 w-14 text-xl font-bold rounded-full relative'>
-                      <div className='absolute text-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-                        ${curElem.price}
+                    <button className='shadow-sm bottom-4 border-white text-white bg-[#fdc55e] cursor-pointer p-3 h-16 w-16 text-xl font-bold rounded-full relative'>
+                      <div className='absolute flex text-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                        <FaRupeeSign className='mt-1' />{curElem.price}
                       </div>
                     </button>
                   </div>
@@ -114,7 +132,7 @@ const Menu = () => {
                     <span className='font-medium'>({curElem?.reviews?.length})</span>
                   </div>
                 </div>
-                <button className='bg-[#f54748] active:scale-90 transition duration-150 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>Order Now</button>
+                <button className='bg-[#f54748] active:scale-90 transition duration-150 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white' onClick={() => addToCart(curElem)}>Add to Cart</button>
               </div>
             ))
 

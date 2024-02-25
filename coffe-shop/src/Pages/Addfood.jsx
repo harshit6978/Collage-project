@@ -47,7 +47,7 @@ const Addfood = () => {
     const foodImage = image?.url;
     const foodData = { name, price, catagory, weight, location, description, foodImage };
 
-    const res = await axios.post("http://localhost:8000/api/v1/food/addfood", { name, price, catagory, weight, location, description, foodImage  }, {
+    const res = await axios.post("http://localhost:8000/api/v1/food/addfood", { name, price, catagory, weight, location, description, foodImage }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -100,11 +100,14 @@ const Addfood = () => {
 
             <select className="select bg-red-500 text-white select-md w-full max-w-xs" name='catagory'>
               <option disabled selected>Catagory</option>
-              <option>Rice</option>
+              <option>Frappuccino</option>
               <option>Desert</option>
-              <option>Drinks</option>
-              <option>Fruits</option>
-              <option>Pizza</option>
+              <option>Late</option>
+              <option>Tonic Base</option>
+              <option>Shakes</option>
+              <option>Mojito</option>
+              <option>Hot Chocolate</option>
+              <option>Juice</option>
             </select>
 
             <input type="Number" placeholder="Enter Weight" name="weight" class=" shadow-sm bg-white appearance-none border rounded w-full py-3 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />

@@ -1,3 +1,279 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.row {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.valign {
+    display: flex;
+    align-items: center;
+}
+
+.position-re {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.containeri {
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1170px;
+}
+
+.padd {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 0;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.fz-50 {
+    font-size: 50px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.fw-200 {
+    font-weight: 200;
+    display: block;
+}
+
+.offset {
+    margin-left: 8.33%;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.fz-18 {
+    font-size: 18px;
+    line-height: 2;
+    font-weight: 400;
+}
+
+.signature {
+    max-width: 150px;
+    margin-top: 20px;
+}
+
+.img-out {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 100px;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* cofeee manue  */
+.bg_cover {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.pb-130 {
+    padding-bottom: 130px;
+}
+
+.pt-120 {
+    padding-top: 120px;
+}
+
+.containeris {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1140px;
+}
+
+.justify-content-center {
+
+    justify-content: center !important;
+}
+
+.rows {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.section_title .title {
+    font-size: 44px;
+    font-weight: 700;
+    font-family: "Philosopher";
+}
+
+.section_title .line {
+    height: 2px;
+    width: 150px;
+    background-color: #E54E1B;
+    border-radius: 50px;
+    margin: 30px auto 0;
+    position: relative;
+}
+
+i,
+span,
+a {
+    display: inline-block;
+}
+
+.section_title .line .box {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #E54E1B;
+    -webkit-transform: translateX(-35%) rotate(45deg);
+    -moz-transform: translateX(-35%) rotate(45deg);
+    -ms-transform: translateX(-35%) rotate(45deg);
+    -o-transform: translateX(-35%) rotate(45deg);
+    transform: translateX(-35%) rotate(45deg);
+}
+
+.section_title .line .box::before,
+.section_title .line .box::after {
+    position: absolute;
+    content: '';
+    top: 7px;
+    left: -8px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(229, 78, 27, 0.33);
+}
+
+.section_title .line .box::after {
+    left: auto;
+    right: -7px;
+    top: -8px;
+}
+
+.section_title .line .box::before,
+.section_title .line .box::after {
+    position: absolute;
+    content: '';
+    /* top: 7px; */
+    /* left: -8px; */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(229, 78, 27, 0.33);
+}
+
+.col-lg-6 {
+    -ms-flex: 0 0 50%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.single_coffee_menu {
+    visibility: visible;
+    animation-duration: 1.3s;
+    animation-delay: 0.2s;
+    animation-name: fadeInUp;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.align-items-center {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.single_coffee_menu .coffee_menu_image img {
+    border-radius: 50%;
+    border: 9px solid #fff;
+    height: 110px;
+    width: 133px;
+}
+
+.single_coffee_menu .coffee_menu_content .coffee_name {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Philosopher";
+}
+.single_coffee_menu .coffee_menu_content .coffee_name .price {
+    float: right;
+    color: #E54E1B;
+    display: flex;
+}
+.single_coffee_menu .coffee_menu_content p {
+    margin-top: 15px;
+}
+ p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #7A7A7A;
+    margin: 0px;
+}

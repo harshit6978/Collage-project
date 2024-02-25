@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const imageRoute = require("./routes/image")
 const userRoute = require("./routes/user")
 const foodRoute = require("./routes/food")
+const orderRoute = require("./routes/order")
 
 
 const app = express()
@@ -42,6 +43,7 @@ mongoose.connection.on("connected", () => {
 app.use('/api/v1/all', imageRoute)
 app.use('/api/v1/user', userRoute)
 app.use('/api/v1/food', foodRoute)
+app.use('/api/v1/order', orderRoute)
 
 
 app.use(express.json({ limit: "3mb" }))

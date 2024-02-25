@@ -23,7 +23,7 @@ const NewFoods = () => {
     console.log(newFood,"fff");
     useEffect(() => {
         getFoods()
-    }, [newFood])
+    }, [])
 
     return (
         <div className='py-3 px-10 sm:px-4 md:px-6 lg:px-6' >

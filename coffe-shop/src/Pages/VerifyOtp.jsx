@@ -35,6 +35,7 @@ const VerifyOtp = () => {
                     toast.success(data.message);
                     location.reload();
                     navigate("/");
+                    window.location('/')
                 } else {
                     toast.error(data.message);
                 }
