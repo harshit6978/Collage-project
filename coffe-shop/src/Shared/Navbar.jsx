@@ -36,16 +36,32 @@ const Navbar = () => {
                     </Link>
 
                     <div className='lg:flex hidden gap-8 items-center'>
-                        <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Today special</a>
 
                         {
                             user?.user?.role === 'admin' && <Link to="/foodDelete" className='text-[#191919] text-xl font-medium hover:text-red-500'>Handle Food</Link>
                         }
-                        <Link to='/menu' className='text-[#191919] text-xl font-medium hover:text-red-500'>Our Menu</Link>
+                        {
+                            user?.user?.role === "admin" && <Link to='/myorder' className='text-[#191919]  text-xl font-medium hover:text-red-500'>My order</Link>
+
+                        }
+                        {
+                            user?.user?.role === 'user' && <Link to='/menu' className='text-[#191919] text-xl font-medium hover:text-red-500'>Our Menu</Link>
+
+                        }
+
                         {
                             user?.user?.role === 'admin' && <Link to='/addfood' className='text-[#191919] text-xl font-medium hover:text-red-500'>Add Food</Link>
                         }
-                        <a href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Populer food</a>
+
+                        {
+                            user?.user?.role === 'user' && "/" && <Link to='/aboutus' href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>About Us</Link>
+
+                        }
+                        {
+                            user?.user?.role === 'user' && "/" && <Link to='/contactus' href='' className='text-[#191919] text-xl font-medium hover:text-red-500'>Contact Us</Link>
+
+                        }
+
 
                         {/* <div className="flex-none"> */}
                         <div className="dropdown dropdown-end">
@@ -86,7 +102,12 @@ const Navbar = () => {
                                             Profile
                                         </Link>
                                     </li>
-                                    <li><a>Settings</a></li>
+                                    <li>
+                                        {
+                                            user?.user?.role === 'user' && "/" && <Link to='/userorder' href='' className='justify-between'>My Order</Link>
+                                        }
+                                    </li>
+
                                     {/* <li><Link to="/deleteFood">DeleteFood</Link></li> */}
                                     <li><button onClick={() => {
                                         localStorage.clear()

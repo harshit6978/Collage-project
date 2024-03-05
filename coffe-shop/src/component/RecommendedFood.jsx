@@ -23,7 +23,7 @@ const RecommendedFood = () => {
     // console.log(newFood, "fff");
     useEffect(() => {
         getFoods()
-    }, [RatedFood])
+    }, [])
 
 
 

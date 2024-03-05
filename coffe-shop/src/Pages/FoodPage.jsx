@@ -27,6 +27,9 @@ const FoodPage = () => {
     }, [])
     // console.log(foodDetails,"food");
 
+    const submit=()=>{
+        console.log("lkjhgfvbnm");
+    }
 
     return (
         <div className='pt-[16vh]'>
@@ -71,7 +74,7 @@ const FoodPage = () => {
 
                             <div className='flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:gap-5 sm:mx-auto sm:justify-center'>
                                 <button className='bg-white active:scale-90 text-[#f54748] transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium '>Favorite</button>
-                                <button className='bg-[#f54748] active:scale-90 transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>Add to Cart</button>
+                                <button className='bg-[#f54748] active:scale-90 transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white' onClick={submit}>Add to Cart</button>
                             </div>
                 
                         </div>

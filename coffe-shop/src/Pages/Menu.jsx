@@ -88,6 +88,8 @@ const Menu = () => {
 
   const { addToCart } = useCartContext()
 
+  
+
   return (
     <div className='pt-[16vh]'>
       <div className='container mx-auto py-8'>
@@ -109,7 +111,7 @@ const Menu = () => {
                     <img src={curElem?.foodImage} />
                   </Link>
                   <div className='absolute top-2 left-2'>
-                    <button className='shadow-sm text-white bg-red-500 hover:bg-red-700 cursor-pointer p-5 rounded-full relative'>
+                    <button className='shadow-sm text-white bg-red-500 hover:bg-red-700 cursor-pointer p-5 rounded-full relative' >
                       <FaHeart className='absolute text-xl top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2' />
                     </button>
                   </div>

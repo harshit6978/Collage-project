@@ -20,13 +20,14 @@ const Order = () => {
     const { user } = useUserContext()
     const stripe = useStripe()
 
-    const handleFinish = async (req, res) => {
+    const handleFinish = async () => {
         try {
             const orderItems = cartItems.map(item => ({
                 food: item._id,
                 qty: item.qty
             }))
             console.log(orderItems, "order");
+            
             const res = await axios.post(`http://localhost:8000/api/v1/order/order`, {
                 user: user?.user._id,
                 items: orderItems,

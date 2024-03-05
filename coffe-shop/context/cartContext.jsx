@@ -1,5 +1,7 @@
 import { createContext, useState, useContext } from "react";
 
+import Swal from "sweetalert2";
+
 const cartContext = createContext();
 
 
@@ -19,6 +21,13 @@ const CartProvider = ({ children }) => {
             setCartItems(
                 [...cartItems, { ...food, qty: 1 }]
             )
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Add To Cart",
+                showConfirmButton: false,
+                timer: 1000
+            });
         }
     }
 
@@ -47,7 +56,6 @@ const CartProvider = ({ children }) => {
         </cartContext.Provider>
     )
 }
-
 const useCartContext = () => {
     return useContext(cartContext)
 }

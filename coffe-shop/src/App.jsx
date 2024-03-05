@@ -19,6 +19,10 @@ import Order from './Pages/Order'
 import { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import MyOrder from './Pages/MyOrder'
+import AboutUs from './Pages/AboutUs'
+import Contactus from './Pages/Contactus'
+import UserOrder from './Pages/UserOrder'
 
 function App() {
   const [count, setcount] = useState(0)
@@ -33,6 +37,8 @@ function App() {
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/aboutus" element={<AboutUs />}></Route>
+        <Route path="/contactus" element={<Contactus />}></Route>
         <Route path="/verifyOtp" element={<VerifyOtp />}></Route>
         <Route path="/addfood" element={<ProtectedRoute><Addfood /></ProtectedRoute>}></Route>
         <Route path='/menu' element={<ProtectedRoute><Menu /></ProtectedRoute>}></Route>
@@ -42,6 +48,8 @@ function App() {
         <Route exact path='/viewcart' element={<ProtectedRoute><ViewCart /></ProtectedRoute>}></Route>
         <Route exact path='/success' element={<ProtectedRoute><Success /></ProtectedRoute>}></Route>
         <Route exact path='/cancel' element={<ProtectedRoute><Cancel /></ProtectedRoute>}></Route>
+        <Route exact path='/myorder' element={<ProtectedRoute><MyOrder /></ProtectedRoute>}></Route>
+        <Route exact path='/userorder' element={<ProtectedRoute><UserOrder /></ProtectedRoute>}></Route>
         <Route exact path='/order' element={<ProtectedRoute>
           <Elements stripe={stripePromise}>
             <Order />
