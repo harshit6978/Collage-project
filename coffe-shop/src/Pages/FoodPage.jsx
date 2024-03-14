@@ -4,12 +4,15 @@ import axios from "axios";
 import PageNavigation from '../component/PageNavigation';
 import { FaGripLines, FaPlus } from "react-icons/fa";
 import { FaRupeeSign } from "react-icons/fa";
+import { useCartContext } from '../../context/cartContext';
 
 
 const FoodPage = () => {
 
     const params = useParams();
     const [foodDetails, setFoodDetails] = useState([])
+    const { addToCart } = useCartContext()
+
 
     const getFoodDetails = async () => {
         try {
@@ -52,7 +55,7 @@ const FoodPage = () => {
                             <div className='text-xl text-justify text-black mb-6'>
                                 {foodDetails?.description}
                             </div>
-                            <div className='flex items-center justify-between mb-6'>
+                            {/* <div className='flex items-center justify-between mb-6'>
                                 <div className='text-2xl font-bold text-[#f54748]'>
                                     Quantity
                                 </div>
@@ -70,11 +73,11 @@ const FoodPage = () => {
 
 
 
-                            </div>
+                            </div> */}
 
                             <div className='flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:gap-5 sm:mx-auto sm:justify-center'>
-                                <button className='bg-white active:scale-90 text-[#f54748] transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium '>Favorite</button>
-                                <button className='bg-[#f54748] active:scale-90 transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white' onClick={submit}>Add to Cart</button>
+                                {/* <button className='bg-white active:scale-90 text-[#f54748] transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium '>Favorite</button> */}
+                                <button className='bg-[#f54748] active:scale-90 transition duration-500 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white' onClick={() => addToCart(foodDetails)}>Add to Cart</button>
                             </div>
                 
                         </div>
@@ -92,7 +95,7 @@ const FoodPage = () => {
                                 Weight :{foodDetails?.weight}
                             </div>
                             <div className='bg-[#f54748] py-4 text-center text-white font-semibold'>
-                                Location :{foodDetails?.location}
+                                Quantity :{foodDetails?.qty}
                             </div>
                             <div className='bg-[#f54748] py-4 text-center text-white font-semibold'>
                                 Location :{foodDetails?.location}

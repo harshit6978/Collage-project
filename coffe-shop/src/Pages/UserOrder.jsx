@@ -11,6 +11,8 @@ const UserOrder = () => {
     const { user } = useUserContext();
     const [orders, setOrders] = useState([]);
 
+    console.log(user, "oooooooooooooooolllllllllllllll");
+
     const getAllOrders = async () => {
         try {
             const res = await axios.post(
@@ -83,6 +85,7 @@ const UserOrder = () => {
                             )
 
                         ))}
+
                     </div>
                 </div>
             </div>
@@ -92,7 +95,7 @@ const UserOrder = () => {
 
 const CartFood = ({ order, onDelete }) => {
     const { user } = useUserContext();
-    // console.log(user.user.email, "ooo");
+    console.log(order.user, "ooo");
 
 
     const paymentStatus = order?.payment ? 'Paid' : 'Not Paid';
@@ -104,6 +107,17 @@ const CartFood = ({ order, onDelete }) => {
             toast.error('Something went wrong');
         }
     };
+
+    let deliveryMessage = '';
+    if (order.status === "Pending") {
+        deliveryMessage = "Your food will be delivered in 5 minutes";
+    } else if (order.status === "Delivered") {
+        deliveryMessage = "Your food has been delivered";
+    } else if (order.status === "Processing") {
+        deliveryMessage = "Your food will be delivered in 10 minutes";
+    } else if (order.status === "Preparing") {
+        deliveryMessage = "Your food will be delivered in 15 minutes";
+    }
 
     return (
         <div className='flex items-center hover:bg-gray-100 -mx-8 px-6 py-5'>
@@ -140,6 +154,20 @@ const CartFood = ({ order, onDelete }) => {
             <div className='flex justify-center w-1/5 cursor-pointer'>
                 <span className='font-bold text-sm'>{order?.status}</span>
             </div>
+            {order.status === "Pending" && (
+                <span className='font-bold text-yellow-400 text-sm'> Your food is delivered in few min</span>
+            )}
+            {order.status === "Delivered" && (
+                <span className='font-bold text-green-600 text-sm'>Your Food Is Delivered Successfully</span>
+            )}
+            {order.status === "Processing" && (
+                <span className='font-bold text-blue-600 text-sm'>Your food will be delivered in 10 minutes</span>
+            )}
+            {order.status === "Preparing" && (
+                <span className='font-bold text-orange-600 text-sm'>Your food will be delivered in 15 minutes</span>
+            )}
+
+            
 
             {/* <span className='font-bold text-center w-1/5 text-sm'>{order?.createdAt}</span> */}
             <span className='font-bold text-sm w-[34%] text-center'>{order?.totalAmount}</span>

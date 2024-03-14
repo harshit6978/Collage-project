@@ -11,7 +11,6 @@ const protect = async (req, res, next) => {
                     success: false,
                 });
             } else {
-                console.log("}{{}{}{", decode);
                 req.body.userId = decode;
                 next();
             }

@@ -33,9 +33,9 @@ const VerifyOtp = () => {
                 console.log("Response data:", data); // Log the response data for debugging
                 if (data.success) {
                     toast.success(data.message);
-                    location.reload();
+                    // location.reload();
                     navigate("/");
-                    window.location('/')
+                    // window.location('/')
                 } else {
                     toast.error(data.message);
                 }

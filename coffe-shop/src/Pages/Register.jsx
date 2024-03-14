@@ -64,71 +64,36 @@ const Register = () => {
   return (
     <div class="register">
       <div class="w-full mx-auto pt-[16vh]">
-        <form
-          class=" ease-in duration-300 w-[80%] sm:w-max shadow-sm backdrop-blur-md bg-white/80 lg:w-max mx-auto rounded-md px-8 py-5"
-          onSubmit={handleOnSubmit}
-        >
+        <form class=" ease-in duration-300 w-[80%] sm:w-max shadow-sm backdrop-blur-md bg-white/80 lg:w-max mx-auto rounded-md px-8 py-5" onSubmit={handleOnSubmit}>
           <label for="file-upload" class="custom-file-upload">
-            <img
-              src={image?.url || profile}
-              alt=""
-              class="h-32 w-32 bg-contain rounded-full mx-auto cursor-pointer"
-            />
+            <img src={image?.url || profile} alt="" class="h-32 w-32 bg-contain rounded-full mx-auto cursor-pointer"/>
           </label>
           <label class="block text-center text-gray-900 text-base mb-2">
             Profile Picture
           </label>
-          <input
-            type="file"
-            label="Image"
-            onChange={handleImage}
-            name="myFile"
-            id="file-upload"
-            class="hidden"
-            accept=" .jpeg, .png, .jpg"
-          />
+          <input type="file" label="Image" onChange={handleImage} name="myFile" id="file-upload" class="hidden" accept=" .jpeg, .png, .jpg"/>
           <div class="mb-3">
             <label class="block text-gray-700 text-sm mb-2" for="name">
               Name
             </label>
-            <input
-              type="text"
-              placeholder="Enter your Name"
-              name="name"
-              class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
+            <input type="text" placeholder="Enter your Name" name="name" class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
           </div>
           <div class="mb-3">
             <label class="block text-gray-700 text-sm mb-2" for="email">
               Email
             </label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              name="email"
-              class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
+            <input type="email" placeholder="Enter your email" name="email" class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
           </div>
           <div class="flex flex-col md:flex-row md:gap-4">
             <div class="mb-3">
               <label class="block text-gray-700 text-sm mb-2">Password</label>
-              <input
-                type="password"
-                placeholder="**********"
-                name="password"
-                class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
+              <input type="password" placeholder="**********" name="password" class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
             </div>
             <div class="mb-3">
               <label class="block text-gray-700 text-sm mb-2">
                 Confrim Password
               </label>
-              <input
-                type="password"
-                placeholder="**********"
-                name="confrimPassword"
-                class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
+              <input type="password" placeholder="**********" name="confrimPassword" class=" shadow-sm bg-white appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
             </div>
           </div>
           <button

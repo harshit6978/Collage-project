@@ -13,6 +13,8 @@ const CartProvider = ({ children }) => {
     const addToCart = (food) => {
         const exist = cartItems.find((x) => x._id === food._id)
 
+        
+
         if (exist) {
             setCartItems(
                 cartItems.map((x) => x._id === food._id ? { ...exist, qty: exist.qty + 1 } : x)

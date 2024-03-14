@@ -7,7 +7,7 @@
     display: flex;
     /* flex-wrap: wrap; */
 }
-
+    
 .valign {
     display: flex;
     align-items: center;

@@ -23,6 +23,7 @@ import MyOrder from './Pages/MyOrder'
 import AboutUs from './Pages/AboutUs'
 import Contactus from './Pages/Contactus'
 import UserOrder from './Pages/UserOrder'
+import Favorite from './Pages/Favorite'
 
 function App() {
   const [count, setcount] = useState(0)
@@ -41,6 +42,7 @@ function App() {
         <Route path="/contactus" element={<Contactus />}></Route>
         <Route path="/verifyOtp" element={<VerifyOtp />}></Route>
         <Route path="/addfood" element={<ProtectedRoute><Addfood /></ProtectedRoute>}></Route>
+        <Route path="/favorite" element={<ProtectedRoute><Favorite /></ProtectedRoute>}></Route>
         <Route path='/menu' element={<ProtectedRoute><Menu /></ProtectedRoute>}></Route>
         <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
         <Route path='/menu/:id' element={<ProtectedRoute><FoodPage /></ProtectedRoute>}></Route>

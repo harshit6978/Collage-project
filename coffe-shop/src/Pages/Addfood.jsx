@@ -44,10 +44,11 @@ const Addfood = () => {
     const weight = form.weight.value;
     const location = form.location.value;
     const description = form.description.value;
+    const qty = form.qty.value; // Extract quantity
     const foodImage = image?.url;
-    const foodData = { name, price, catagory, weight, location, description, foodImage };
+    const foodData = { name, price, catagory, weight, location, description, foodImage, qty };
 
-    const res = await axios.post("http://localhost:8000/api/v1/food/addfood", { name, price, catagory, weight, location, description, foodImage }, {
+    const res = await axios.post("http://localhost:8000/api/v1/food/addfood", { name, price, catagory, weight, location, description, foodImage, qty }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -111,6 +112,7 @@ const Addfood = () => {
             </select>
 
             <input type="Number" placeholder="Enter Weight" name="weight" class=" shadow-sm bg-white appearance-none border rounded w-full py-3 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <input type="Number" placeholder="Enter qty" name="qty" class=" shadow-sm bg-white appearance-none border rounded w-full py-3 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
 
             <input type="text" placeholder="Enter Location" name="location" class=" shadow-sm bg-white appearance-none border rounded w-full py-3 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
 

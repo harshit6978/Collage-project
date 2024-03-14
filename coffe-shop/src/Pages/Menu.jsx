@@ -63,7 +63,7 @@ const Menu = () => {
     },
   ];
 
-  console.log(Food,"fooddddd");
+  console.log(Food, "fooddddd");
   const handleBtn = (btn) => {
     setActive(btn.id);
     setValue(btn.value);
@@ -88,7 +88,7 @@ const Menu = () => {
 
   const { addToCart } = useCartContext()
 
-  
+
 
   return (
     <div className='pt-[16vh]'>
@@ -129,12 +129,14 @@ const Menu = () => {
                 <div className='flex gap-4 items-center'>
                   <p className='text-xl text-center font-bold text-[#f54748]'>{curElem.name}</p>
                   <div className='flex text-sm space-x-2 cursor-pointer'>
-                    <span className='font-normal text-[#fdc55e]'>4.3</span>
-                    <FaStar size={16} className='text-[#fdc55e]' />
-                    <span className='font-medium'>({curElem?.reviews?.length})</span>
+                    {/* <span className='font-normal text-[#fdc55e]'>4.3</span> */}
+                    {/* <FaStar size={16} className='text-[#fdc55e]' /> */}
+                    <span className='font-medium'>({curElem.qty})</span>
                   </div>
                 </div>
-                <button className='bg-[#f54748] active:scale-90 transition duration-150 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white' onClick={() => addToCart(curElem)}>Add to Cart</button>
+                <button className={curElem.qty === 0 ? 'bg-gray-400 cursor-not-allowed transition duration-150 transform shadow-md rounded-full px-8 py-2 text-xl font-medium text-white' : 'bg-[#f54748] active:scale-90 transition duration-150 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'} onClick={() => addToCart(curElem)} disabled={curElem.qty === 0}>
+                  {curElem.qty === 0 ? 'Out of Stock' : 'Add to Cart'}
+                </button>
               </div>
             ))
 

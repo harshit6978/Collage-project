@@ -28,12 +28,12 @@ const Foods = ({ curElem }) => {
             <div className='flex gap-4 items-center'>
                 <p className='text-xl text-center font-bold text-[#f54748]'>{curElem.name}</p>
                 <div className='flex text-sm space-x-2 cursor-pointer'>
-                    <span className='font-normal text-[#fdc55e]'>4.3</span>
-                    <FaStar size={16} className='text-[#fdc55e]' />
-                    <span className='font-medium'>({curElem?.reviews?.length})</span>
+                    {/* <span className='font-normal text-[#fdc55e]'>4.3</span> */}
+                    {/* <FaStar size={16} className='text-[#fdc55e]' /> */}
+                    <span className='font-medium'>({curElem?.qty})</span>
                 </div>
             </div>
-            <button className='bg-[#f54748] active:scale-90 transition duration-150 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>Order Now</button>
+            {/* <button className='bg-[#f54748] active:scale-90 transition duration-150 transform hover:shadow-xl shadow-md rounded-full px-8 py-2 text-xl font-medium text-white'>Order Now</button> */}
         </div>
     )
 }

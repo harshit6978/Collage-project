@@ -23,11 +23,11 @@ const Navbar = () => {
 
     return (
         <div className="bg-white/80 shadow-md fixed top-0 left-0 w-full z-40 ease duration-300 backdrop-blur-md">
-            {/* {user && !user.isVerified && (
+            {user && user.isVerified && (
                 <div className='bg-red-500 py-3 px-4 text-white'>
                     <Link to="/verifyOtp">Please verify</Link>
                 </div>
-            )} */}
+            )}
 
             <div className='py-3 px-10 sm:px-10 md:px-6 lg:px-6'>
                 <div className='flex items-center justify-between'>
@@ -105,6 +105,11 @@ const Navbar = () => {
                                     <li>
                                         {
                                             user?.user?.role === 'user' && "/" && <Link to='/userorder' href='' className='justify-between'>My Order</Link>
+                                        }
+                                    </li>
+                                      <li>
+                                        {
+                                            user?.user?.role === 'user' && "/" && <Link to='/favorite' href='' className='justify-between'>favorite</Link>
                                         }
                                     </li>
 

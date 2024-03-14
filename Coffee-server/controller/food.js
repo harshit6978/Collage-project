@@ -2,7 +2,7 @@ const Food = require('../model/Food')
 
 const createFood = async (req, res) => {
     try {
-        const { name, price, description, catagory, weight, foodImage } = req.body;
+        const { name, price, description, catagory, weight, foodImage,qty } = req.body;
         const newFood = new Food({
             name,
             price,
@@ -10,6 +10,7 @@ const createFood = async (req, res) => {
             catagory,
             weight,
             foodImage,
+            qty
         })
         const saveFood = newFood.save();
         res.status(200).json({
@@ -175,7 +176,7 @@ const deleteFood = async function (req, res) {
 
 const updateFood = async (req, res) => {
     const { id } = req.params;
-    const { price, foodImage, name } = req.body;
+    const { price, foodImage, name ,qty } = req.body;
 
     try {
         // Find the food item by ID
@@ -191,6 +192,9 @@ const updateFood = async (req, res) => {
         }
         if (name) {
             food.name = name;
+        }
+        if (qty) {
+            food.qty = qty;
         }
         if (foodImage) {
             food.foodImage = foodImage;

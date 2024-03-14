@@ -58,7 +58,6 @@ const createOrder = async (req, res) => {
     }
 }
 
-
 const markOrderAsDelivered = async (req, res) => {
     try {
         const { orderId } = req.body;
@@ -84,6 +83,33 @@ const markOrderAsDelivered = async (req, res) => {
         });
     }
 };
+
+const markOrderAsPreparing = async (req, res) => {
+    try {
+        const { orderId } = req.body;
+        const order = await Order.findById(orderId);
+        if (!order) {
+            return res.status(404).json({
+                success: false,
+                message: "Order not found",
+            });
+        }
+        order.status = "Preparing";
+        await order.save();
+        res.status(200).json({
+            success: true,
+            data: order,
+            message: "Order marked as Preparing",
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Something went wrong",
+        });
+    }
+};
+
 
 const getAllOrders = async (req, res) => {
     try {
@@ -146,4 +172,4 @@ const deleteOrder = async (req, res) => {
 
 
 
-module.exports = { createOrder, getAllOrders, getSingleOrder, markOrderAsDelivered, deleteOrder  }
+module.exports = { createOrder, getAllOrders, getSingleOrder, markOrderAsDelivered, deleteOrder, markOrderAsPreparing }

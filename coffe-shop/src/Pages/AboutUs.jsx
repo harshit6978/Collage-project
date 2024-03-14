@@ -1,7 +1,7 @@
 import React from 'react'
 import "./../App.css"
-import Carousel from '../component/Carousel'
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
+// import Carousel from '../component/Carousel'
+// import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
 
 const AboutUs = () => {
     return (
@@ -43,14 +43,6 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-
-            <div className='mt-40 pb-8   justify-center text-center text-2xl font-serif'>
-                <div className='bg-amber-900 w-96 justify-center text-center rounded-3xl text-white m-auto p-2 flex'><FaAngleDoubleLeft className='mt-[5px] mr-2 text-xl' />
-                    Our New Products Soon <FaAngleDoubleRight className='mt-[5px] ml-2 text-xl' />
-                </div>
-            </div>
-
-            <Carousel />
         </div>
 
 
